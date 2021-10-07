@@ -11,7 +11,7 @@ app = Flask(__name__)
 pp = PrettyPrinter()
 
 apiKey = 'TidP7NUQAdecvBjagQBF1bC6PMPsETyV8BCDFPQm'
-@app.route('/nasa/image-of-month',methods=['GET','POST'])
+@app.route('/nasa/image-of-month',methods=['GET'])
 def task():
   URL_APOD = "https://api.nasa.gov/planetary/apod"
   date = '2021-10-01'
@@ -28,7 +28,7 @@ def task():
     js={"status": 404,"message": "image/video not found"}
     return js
 
-@app.route('/nasa/image-of-month/<year>/<month>')
+@app.route('/nasa/image-of-month/<year>/<month>',methods=['GET'])
 def task1(year,month):
   URL_APOD = "https://api.nasa.gov/planetary/apod"
   c=0
@@ -71,7 +71,7 @@ def task1(year,month):
     return js
 
 
-@app.route('/nasa/videos-of-month/<year>/<month>')
+@app.route('/nasa/videos-of-month/<year>/<month>',methods=['GET'])
 def task2(year,month):
   URL_APOD = "https://api.nasa.gov/planetary/apod"
   c=0
@@ -115,7 +115,7 @@ def task2(year,month):
     js={"status": 404,"message": "image/video not found"}
     return js
 
-@app.route('/nasa/earth-poly-image/<date>')
+@app.route('/nasa/earth-poly-image/<date>',methods=['GET'])
 def task3(date):
   URL_APOD = "https://epic.gsfc.nasa.gov/api/images.php"
   sdate = date
@@ -139,7 +139,7 @@ def task3(date):
 
 
 
-@app.route('/weather/city/<name>')
+@app.route('/weather/city/<name>',methods=['GET'])
 def task4(name):
   try:
     BASE_URL = "https://api.openweathermap.org/data/2.5/weather?"
@@ -159,7 +159,7 @@ def task4(name):
     return js
 
 
-@app.route('/weather/search/<lat>/<lon>')
+@app.route('/weather/search/<lat>/<lon>',methods=['GET'])
 def task5(lat,lon):
   try:
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
@@ -178,7 +178,7 @@ def task5(lat,lon):
     }
     return js
 
-@app.route('/weather/search/<pin_code>')
+@app.route('/weather/search/<pin_code>',methods=['GET'])
 def task6(pin_code):
   try:
     API_key = "0d8681b69560b5cdd6257184d3c7fc14"
@@ -198,7 +198,7 @@ def task6(pin_code):
     }
     return js
 
-@app.route('/')
+@app.route('/',methods=['GET'])
 def start():
   js={"data":"codeCrunch21 -> 06-oct-21"}
   return js
