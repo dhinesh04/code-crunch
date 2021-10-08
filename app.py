@@ -257,22 +257,5 @@ def getTeam(name):
         return jsonify({"status": 404,"message": "coin/token not found"})
 
 
-#------------------------------------------------SECTION 5-----------------------------------
-
-@app.route('/users/<username>',method=['GET'])
-def github(username):
-    url = f"https://api.github.com/users/{username}"
-    try:
-        params = {
-            'username':username,
-        }
-        user_data = requests.get(url,params=params).json()
-        dict={'name':user_data['name'],'avatar_url':user_data['avatar_url'],'public_repos':user_data['public_repos'],'followers':user_data['followers'],'following':user_data['following'],'url':user_data['url'],'bio':user_data['bio']}
-        pprint(user_data)
-        return dict
-    except:
-        js={"status": 404,"message": "resource not found"}
-        return js
-
 if __name__=='__main__':
   app.run(debug=True)
