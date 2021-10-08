@@ -246,7 +246,7 @@ def getname(name):
 @app.route("/crypto/team/<name>",methods=["GET"]) 
 def getTeam(name):
     try: 
-        response1=requests.get("https://api.coinpaprika.com/v1/coins"+"/crypto/team/"+name)                
+        response1=requests.get("https://api.coinpaprika.com/v1/crypto/team/"+name)                
         response1=response1.json()        
         return jsonify(response1)
     except:
