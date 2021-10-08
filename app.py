@@ -244,7 +244,7 @@ def getname(name):
         return jsonify({"status": 404,"message": "coin/token not found"})
 
 
-@app.route("/crypto/team/<uname>",methods=["GET"]) 
+@app.route("/crypto/team/<name>",methods=["GET"]) 
 def getTeam(name):
     url = f"https://api.coinpaprika.com/v1/coins/crypto/team/{name}"
     try: 
