@@ -193,10 +193,7 @@ def task5():
         js={"status": 404,"message": "weather data not found"}
         return js
 
-@app.route('/',methods=['GET'])
-def start():
-  js={"data":"codeCrunch21 -> 06-oct-21"}
-  return js
+
 
 
 
@@ -275,6 +272,10 @@ def github(username):
         js={"status": 404,"message": "resource not found"}
         return js
 
+@app.route('/',methods=['GET'])
+def start():
+  js={"data":"codeCrunch21 -> 06-oct-21"}
+  return js
 
 if __name__=='__main__':
   app.run(debug=True)
